@@ -36,7 +36,7 @@ namespace PortableBitBucketClient
 
 			foreach (var item in dictionary)
 			{
-				builder.AppendFormat($"{item.Key}={(string)item.Value}&");
+				builder.AppendFormat($"{item.Key}={item.Value}&");
 			}
 
 			return builder.ToString();
