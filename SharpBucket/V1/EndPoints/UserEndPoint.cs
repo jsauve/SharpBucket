@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using SharpBucket.V1.Pocos;
+using System.Threading.Tasks;
+using PortableBitBucketClient.V1.Pocos;
 
-namespace SharpBucket.V1.EndPoints{
+namespace PortableBitBucketClient.V1.EndPoints{
     /// <summary>
     /// Use the user endpoints to gets information related to the currently authenticated user. 
     /// It is useful for OAuth or other in situations where the username is unknown. 
@@ -11,10 +12,10 @@ namespace SharpBucket.V1.EndPoints{
     /// https://confluence.atlassian.com/display/BITBUCKET/user+Endpoint
     /// </summary>
     public class UserEndPoint{
-        private readonly SharpBucketV1 _sharpBucketV1;
+        private readonly BitBucketClientV1 _sharpBucketV1;
         private readonly string _baseUrl;
 
-        public UserEndPoint(SharpBucketV1 sharpBucketV1){
+        public UserEndPoint(BitBucketClientV1 sharpBucketV1){
             _sharpBucketV1 = sharpBucketV1;
             _baseUrl = "user/";
         }
@@ -23,8 +24,8 @@ namespace SharpBucket.V1.EndPoints{
         /// Gets the basic information associated with an account and a list of all of the repositories owned by the user.
         /// </summary>
         /// <returns></returns>
-        public UserInfo GetInfo(){
-            return _sharpBucketV1.Get(new UserInfo(), _baseUrl);
+        public async Task<UserInfo> GetInfo(){
+            return await _sharpBucketV1.Get(new UserInfo(), _baseUrl);
         }
 
         /// <summary>
@@ -33,9 +34,9 @@ namespace SharpBucket.V1.EndPoints{
         /// An account can have admin or collaborator (member) privileges. The accountname always has admin privileges on itself. 
         /// </summary>
         /// <returns></returns>
-        public Privileges ListPrivileges(){
+        public async Task<Privileges> ListPrivileges(){
             var overrideUrl = _baseUrl + "privileges";
-            return _sharpBucketV1.Get(new Privileges(), overrideUrl);
+            return await _sharpBucketV1.Get(new Privileges(), overrideUrl);
         }
 
         /// <summary>
@@ -44,9 +45,9 @@ namespace SharpBucket.V1.EndPoints{
         /// An account always "follows" its own repositories. 
         /// </summary>
         /// <returns></returns>
-        public List<Repository> ListFollows(){
+        public async Task<List<Repository>> ListFollows(){
             var overrideUrl = _baseUrl + "follows";
-            return _sharpBucketV1.Get(new List<Repository>(), overrideUrl);
+            return await _sharpBucketV1.Get(new List<Repository>(), overrideUrl);
         }
 
         /// <summary>
@@ -54,18 +55,18 @@ namespace SharpBucket.V1.EndPoints{
         /// Use this if you're looking for a full list of all of the repositories associated with a user.
         /// </summary>
         /// <returns></returns>
-        public List<Repository> ListRepositories(){
+        public async Task<List<Repository>> ListRepositories(){
             var overrideUrl = _baseUrl + "repositories";
-            return _sharpBucketV1.Get(new List<Repository>(), overrideUrl);
+            return await _sharpBucketV1.Get(new List<Repository>(), overrideUrl);
         }
 
         /// <summary>
         /// List the repositories the account follows.  This is the same list that appears on the Following tab on your account dashboard.
         /// </summary>
         /// <returns></returns>
-        public RepositoriesOverview RepositoriesOverview(){
+        public async Task<RepositoriesOverview> RepositoriesOverview(){
             var overrideUrl = _baseUrl + "repositories/overview";
-            return _sharpBucketV1.Get(new RepositoriesOverview(), overrideUrl);
+            return await _sharpBucketV1.Get(new RepositoriesOverview(), overrideUrl);
         }
 
         // TODO: Fix serialization
@@ -73,9 +74,9 @@ namespace SharpBucket.V1.EndPoints{
         /// List the repositories from the account's dashboard.
         /// </summary>
         /// <returns></returns>
-        public object GetRepositoryDasboard(){
+        public async Task<object> GetRepositoryDasboard(){
             var overrideUrl = _baseUrl + "repositories/dashboard";
-            return _sharpBucketV1.Get(new object(), overrideUrl);
+            return await _sharpBucketV1.Get(new object(), overrideUrl);
         }
     }
 }

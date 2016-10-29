@@ -1,0 +1,119 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="SharpBucket/SharpBucket.cs">
+    <Files>
+      <File FileName="SharpBucket/Authentication/RequestExecutor.cs" Line="3" Column="14" />
+      <File FileName="SharpBucket/V1/SharpBucketV1.cs" Line="33" Column="4" />
+      <File FileName="SharpBucket/V1/EndPoints/IssueResource.cs" Line="7" Column="15" />
+      <File FileName="SharpBucket/V1/Pocos/BranchInfo.cs" Line="2" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Changeset.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Activity.cs" Line="9" Column="2" />
+      <File FileName="SharpBucket/V2/EndPoints/EndPoint.cs" Line="58" Column="36" />
+      <File FileName="SharpBucket/V1/EndPoints/IssuesResource.cs" Line="229" Column="22" />
+      <File FileName="SharpBucket/V1/EndPoints/PrivilegesEndPoint.cs" Line="41" Column="4" />
+      <File FileName="SharpBucket/V1/EndPoints/RepositoriesEndPoint.cs" Line="138" Column="1" />
+      <File FileName="SharpBucket/V1/EndPoints/UserEndPoint.cs" Line="14" Column="31" />
+      <File FileName="SharpBucket/V1/EndPoints/UsersEndPoint.cs" Line="27" Column="52" />
+      <File FileName="SharpBucket/V1/Pocos/ChangesetInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Comment.cs" Line="7" Column="3" />
+      <File FileName="SharpBucket/V1/Pocos/Component.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Consumer.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Diffstat.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/DiffstatInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/EmailInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/EventData.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/EventInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/FileInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Filter.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Followers.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/InvitationsInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Issue.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/IssueFollowers.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/IssuesInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Link.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/LinkInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/MainBranch.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Metadata.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Milestone.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Privileges.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/RepositoriesOverview.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Repository.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/RepositoryEvent.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/RepositoryPrivileges.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/RepositorySimple.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/RepositoryPrivilegesUser.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Revision.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/SSH.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/SSHDetailed.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Tag.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/User.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/UserInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Version.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V1/Pocos/Wiki.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/EndPoints/PullRequestResource.cs" Line="6" Column="2" />
+      <File FileName="SharpBucket/V2/EndPoints/PullRequestsResource.cs" Line="9" Column="65" />
+      <File FileName="SharpBucket/V2/EndPoints/RepositoriesEndPoint.cs" Line="220" Column="91" />
+      <File FileName="SharpBucket/V2/EndPoints/RepositoryResource.cs" Line="194" Column="10" />
+      <File FileName="SharpBucket/V2/EndPoints/TeamsEndPoint.cs" Line="12" Column="2" />
+      <File FileName="SharpBucket/V2/EndPoints/UsersEndpoint.cs" Line="10" Column="64" />
+      <File FileName="SharpBucket/V2/Pocos/ActivityInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Branch.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Author.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/BranchRestriction.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/BranchRestrictionInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Comment.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/CommentsInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Commit.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/CommitInfo.cs" Line="2" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Content.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Fork.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/ForkInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/IteratorBasedPage.cs" Line="8" Column="15" />
+      <File FileName="SharpBucket/V2/Pocos/Link.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Links.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/ListBasedPage.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Merge.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Owner.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Parent.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/PullRequest.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/PullRequestInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/PullRequestsInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Repository.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Source.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Team.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/TeamProfile.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Update.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/User.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/UserShort.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/UsersInfo.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/Watcher.cs" Line="1" Column="1" />
+      <File FileName="SharpBucket/V2/Pocos/WatcherInfo.cs" Line="6" Column="2" />
+      <File FileName="SharpBucket/V2/SharpBucketV2.cs" Line="13" Column="3" />
+      <File FileName="SharpBucket.Portable/HttpMethod.cs" Line="9" Column="3" />
+      <File FileName="SharpBucket/SharpBucket.cs" Line="10" Column="2" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SharpBucket.Portable" expanded="True">
+            <Node name="PortableBitBucketClient" expanded="True">
+              <Node name="V1" expanded="True">
+                <Node name="EndPoints" expanded="True" />
+                <Node name="Pocos" expanded="True" />
+              </Node>
+              <Node name="V2" expanded="True">
+                <Node name="EndPoints" expanded="True" />
+                <Node name="Pocos" expanded="True" />
+              </Node>
+              <Node name="SharpBucket.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

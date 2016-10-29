@@ -1,4 +1,6 @@
-﻿namespace SharpBucket.V1.Pocos{
-    public class Milestone : Component{
-    }
+﻿namespace PortableBitBucketClient.V1.Pocos
+{
+	public class Milestone : Component
+	{
+	}
 }

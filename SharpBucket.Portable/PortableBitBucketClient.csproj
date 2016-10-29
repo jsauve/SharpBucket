@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{954342BD-195A-42BC-B428-E30714E0A733}</ProjectGuid>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PortableBitBucketClient</RootNamespace>
+    <AssemblyName>PortableBitBucketClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\SharpBucket\Authentication\RequestExecutor.cs">
+      <Link>Authentication\RequestExecutor.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\Authentication\Token.cs">
+      <Link>Authentication\Token.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\BitBucketClientV1.cs">
+      <Link>V1\BitBucketClientV1.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\EndPoints\IssueResource.cs">
+      <Link>V1\EndPoints\IssueResource.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\EndPoints\IssuesResource.cs">
+      <Link>V1\EndPoints\IssuesResource.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\EndPoints\PrivilegesEndPoint.cs">
+      <Link>V1\EndPoints\PrivilegesEndPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\EndPoints\RepositoriesEndPoint.cs">
+      <Link>V1\EndPoints\RepositoriesEndPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\EndPoints\UserEndPoint.cs">
+      <Link>V1\EndPoints\UserEndPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\EndPoints\UsersEndPoint.cs">
+      <Link>V1\EndPoints\UsersEndPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\BranchInfo.cs">
+      <Link>V1\Pocos\BranchInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Changeset.cs">
+      <Link>V1\Pocos\Changeset.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\ChangesetInfo.cs">
+      <Link>V1\Pocos\ChangesetInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Comment.cs">
+      <Link>V1\Pocos\Comment.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Component.cs">
+      <Link>V1\Pocos\Component.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Consumer.cs">
+      <Link>V1\Pocos\Consumer.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Diffstat.cs">
+      <Link>V1\Pocos\Diffstat.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\DiffstatInfo.cs">
+      <Link>V1\Pocos\DiffstatInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\EmailInfo.cs">
+      <Link>V1\Pocos\EmailInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\EventData.cs">
+      <Link>V1\Pocos\EventData.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\EventInfo.cs">
+      <Link>V1\Pocos\EventInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\FileInfo.cs">
+      <Link>V1\Pocos\FileInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Filter.cs">
+      <Link>V1\Pocos\Filter.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Followers.cs">
+      <Link>V1\Pocos\Followers.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\InvitationsInfo.cs">
+      <Link>V1\Pocos\InvitationsInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Issue.cs">
+      <Link>V1\Pocos\Issue.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\IssueFollowers.cs">
+      <Link>V1\Pocos\IssueFollowers.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\IssuesInfo.cs">
+      <Link>V1\Pocos\IssuesInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Link.cs">
+      <Link>V1\Pocos\Link.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\LinkInfo.cs">
+      <Link>V1\Pocos\LinkInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\MainBranch.cs">
+      <Link>V1\Pocos\MainBranch.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Metadata.cs">
+      <Link>V1\Pocos\Metadata.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Milestone.cs">
+      <Link>V1\Pocos\Milestone.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Privileges.cs">
+      <Link>V1\Pocos\Privileges.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\RepositoriesOverview.cs">
+      <Link>V1\Pocos\RepositoriesOverview.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Repository.cs">
+      <Link>V1\Pocos\Repository.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\RepositoryEvent.cs">
+      <Link>V1\Pocos\RepositoryEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\RepositoryPrivileges.cs">
+      <Link>V1\Pocos\RepositoryPrivileges.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\RepositoryPrivilegesUser.cs">
+      <Link>V1\Pocos\RepositoryPrivilegesUser.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\RepositorySimple.cs">
+      <Link>V1\Pocos\RepositorySimple.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Revision.cs">
+      <Link>V1\Pocos\Revision.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\SSH.cs">
+      <Link>V1\Pocos\SSH.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\SSHDetailed.cs">
+      <Link>V1\Pocos\SSHDetailed.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Tag.cs">
+      <Link>V1\Pocos\Tag.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\User.cs">
+      <Link>V1\Pocos\User.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\UserInfo.cs">
+      <Link>V1\Pocos\UserInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Version.cs">
+      <Link>V1\Pocos\Version.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V1\Pocos\Wiki.cs">
+      <Link>V1\Pocos\Wiki.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\BitBucketClientV2.cs">
+      <Link>V2\BitBucketClientV2.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\EndPoints\EndPoint.cs">
+      <Link>V2\EndPoints\EndPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\EndPoints\PullRequestResource.cs">
+      <Link>V2\EndPoints\PullRequestResource.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\EndPoints\PullRequestsResource.cs">
+      <Link>V2\EndPoints\PullRequestsResource.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\EndPoints\RepositoriesEndPoint.cs">
+      <Link>V2\EndPoints\RepositoriesEndPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\EndPoints\RepositoryResource.cs">
+      <Link>V2\EndPoints\RepositoryResource.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\EndPoints\TeamsEndPoint.cs">
+      <Link>V2\EndPoints\TeamsEndPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\EndPoints\UsersEndpoint.cs">
+      <Link>V2\EndPoints\UsersEndpoint.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Activity.cs">
+      <Link>V2\Pocos\Activity.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\ActivityInfo.cs">
+      <Link>V2\Pocos\ActivityInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Author.cs">
+      <Link>V2\Pocos\Author.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Branch.cs">
+      <Link>V2\Pocos\Branch.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\BranchRestriction.cs">
+      <Link>V2\Pocos\BranchRestriction.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\BranchRestrictionInfo.cs">
+      <Link>V2\Pocos\BranchRestrictionInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Comment.cs">
+      <Link>V2\Pocos\Comment.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\CommentsInfo.cs">
+      <Link>V2\Pocos\CommentsInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Commit.cs">
+      <Link>V2\Pocos\Commit.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\CommitInfo.cs">
+      <Link>V2\Pocos\CommitInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Content.cs">
+      <Link>V2\Pocos\Content.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Fork.cs">
+      <Link>V2\Pocos\Fork.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\ForkInfo.cs">
+      <Link>V2\Pocos\ForkInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\IteratorBasedPage.cs">
+      <Link>V2\Pocos\IteratorBasedPage.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Link.cs">
+      <Link>V2\Pocos\Link.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Links.cs">
+      <Link>V2\Pocos\Links.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\ListBasedPage.cs">
+      <Link>V2\Pocos\ListBasedPage.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Merge.cs">
+      <Link>V2\Pocos\Merge.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Owner.cs">
+      <Link>V2\Pocos\Owner.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Parent.cs">
+      <Link>V2\Pocos\Parent.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\PullRequest.cs">
+      <Link>V2\Pocos\PullRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\PullRequestInfo.cs">
+      <Link>V2\Pocos\PullRequestInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\PullRequestsInfo.cs">
+      <Link>V2\Pocos\PullRequestsInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Repository.cs">
+      <Link>V2\Pocos\Repository.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Source.cs">
+      <Link>V2\Pocos\Source.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Team.cs">
+      <Link>V2\Pocos\Team.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\TeamProfile.cs">
+      <Link>V2\Pocos\TeamProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Update.cs">
+      <Link>V2\Pocos\Update.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\User.cs">
+      <Link>V2\Pocos\User.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\UserShort.cs">
+      <Link>V2\Pocos\UserShort.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\UsersInfo.cs">
+      <Link>V2\Pocos\UsersInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\Watcher.cs">
+      <Link>V2\Pocos\Watcher.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\V2\Pocos\WatcherInfo.cs">
+      <Link>V2\Pocos\WatcherInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharpBucket\BitBucketClient.cs">
+      <Link>BitBucketClient.cs</Link>
+    </Compile>
+    <Compile Include="HttpMethod.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+</Project>

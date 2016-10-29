@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using SharpBucket.V1.Pocos;
+using System.Threading.Tasks;
+using PortableBitBucketClient.V1.Pocos;
 
-namespace SharpBucket.V1.EndPoints{
+namespace PortableBitBucketClient.V1.EndPoints{
     /// <summary>
     /// The users endpoints gets information related to an individual or team account. 
     /// Individual and team accounts both have the same set of user fields:
@@ -9,10 +10,10 @@ namespace SharpBucket.V1.EndPoints{
     /// https://confluence.atlassian.com/display/BITBUCKET/users+Endpoint+-+1.0
     /// </summary>
     public class UsersEndPoint{
-        private readonly SharpBucketV1 _sharpBucketV1;
+        private readonly BitBucketClientV1 _sharpBucketV1;
         private readonly string _baseUrl;
 
-        public UsersEndPoint(string accountName, SharpBucketV1 sharpBucketV1){
+        public UsersEndPoint(string accountName, BitBucketClientV1 sharpBucketV1){
             _sharpBucketV1 = sharpBucketV1;
             _baseUrl = "users/" + accountName + "/";
         }
@@ -22,18 +23,18 @@ namespace SharpBucket.V1.EndPoints{
         /// This call requires authentication.
         /// </summary>
         /// <returns></returns>
-        public EventInfo ListUserEvents(){
+        public async Task<EventInfo> ListUserEvents(){
             var overrideUrl = _baseUrl + "events/";
-            return _sharpBucketV1.Get(new EventInfo(), overrideUrl);
+            return await _sharpBucketV1.Get(new EventInfo(), overrideUrl);
         }
 
         /// <summary>
         /// Gets the groups with account privileges defined for a team account. 
         /// </summary>
         /// <returns></returns>
-        public Privileges ListUserPrivileges(){
+        public async Task<Privileges> ListUserPrivileges(){
             var overrideUrl = _baseUrl + "privileges/";
-            return _sharpBucketV1.Get(new Privileges(), overrideUrl);
+            return await _sharpBucketV1.Get(new Privileges(), overrideUrl);
         }
 
         /// <summary>
@@ -41,9 +42,9 @@ namespace SharpBucket.V1.EndPoints{
         /// This call requires authorization and the caller must have administrative rights on the account.
         /// </summary>
         /// <returns></returns>
-        public InvitationsInfo ListInvitations(){
+        public async Task<InvitationsInfo> ListInvitations(){
             var overrideUrl = _baseUrl + "invitations/";
-            return _sharpBucketV1.Get(new InvitationsInfo(), overrideUrl);
+            return await _sharpBucketV1.Get(new InvitationsInfo(), overrideUrl);
         }
 
         // TODO: Serialization
@@ -54,9 +55,9 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="email">The email.</param>
         /// <returns></returns>
-        public object GetInvitationsFor(string email){
+        public async Task<object> GetInvitationsFor(string email){
             var overrideUrl = _baseUrl + "invitations/" + email;
-            return _sharpBucketV1.Get(new object(), overrideUrl);
+            return await _sharpBucketV1.Get(new object(), overrideUrl);
         }
 
         /// <summary>
@@ -64,18 +65,18 @@ namespace SharpBucket.V1.EndPoints{
         /// Currently, the Bitbucket UI does not list each account, it only displays the count. This call requires authentication.
         /// </summary>
         /// <returns></returns>
-        public Followers ListFollowers(){
+        public async Task<Followers> ListFollowers(){
             var overrideUrl = _baseUrl + "followers/";
-            return _sharpBucketV1.Get(new Followers(), overrideUrl);
+            return await _sharpBucketV1.Get(new Followers(), overrideUrl);
         }
 
         /// <summary>
         /// List the consumers integrated with the account.
         /// </summary>
         /// <returns></returns>
-        public List<Consumer> ListConsumers(){
+        public async Task<List<Consumer>> ListConsumers(){
             var overrideUrl = _baseUrl + "consumers/";
-            return _sharpBucketV1.Get(new List<Consumer>(), overrideUrl);
+            return await _sharpBucketV1.Get(new List<Consumer>(), overrideUrl);
         }
 
         /// <summary>
@@ -83,18 +84,18 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="consumerId">Identifier for the key.</param>
         /// <returns></returns>
-        public Consumer GetConsumer(int? consumerId){
+        public async Task<Consumer> GetConsumer(int? consumerId){
             var overrideUrl = _baseUrl + "consumers/" + consumerId;
-            return _sharpBucketV1.Get(new Consumer(), overrideUrl);
+            return await _sharpBucketV1.Get(new Consumer(), overrideUrl);
         }
 
         /// <summary>
         /// List all of the keys associated with an account. This call requires authentication. 
         /// </summary>
         /// <returns></returns>
-        public List<SSH> ListSSHKeys(){
+        public async Task<List<SSH>> ListSSHKeys(){
             var overrideUrl = _baseUrl + "ssh-keys/";
-            return _sharpBucketV1.Get(new List<SSH>(), overrideUrl);
+            return await _sharpBucketV1.Get(new List<SSH>(), overrideUrl);
         }
 
         /// <summary>
@@ -103,19 +104,19 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="pk">The key identifier. This is an internal value created by Bitbucket when the key is added.</param>
         /// <returns></returns>
-        public SSHDetailed GetSSHKey(int? pk){
+        public async Task<SSHDetailed> GetSSHKey(int? pk){
             var overrideUrl = _baseUrl + "ssh-keys/" + pk;
-            return _sharpBucketV1.Get(new SSHDetailed(), overrideUrl);
+            return await _sharpBucketV1.Get(new SSHDetailed(), overrideUrl);
         }
 
         /// <summary>
         /// List of all the email addresses associated with the account. 
-        /// This call requires authentication. The possible return fields are the same for both individual and team accounts. 
+        /// This call requires authentication. The possible return await fields are the same for both individual and team accounts. 
         /// </summary>
         /// <returns></returns>
-        public List<EmailInfo> ListEmails(){
+        public async Task<List<EmailInfo>> ListEmails(){
             var overrideUrl = _baseUrl + "emails/";
-            return _sharpBucketV1.Get(new List<EmailInfo>(), overrideUrl);
+            return await _sharpBucketV1.Get(new List<EmailInfo>(), overrideUrl);
         }
 
         /// <summary>
@@ -124,9 +125,9 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="email">The email address to get.</param>
         /// <returns></returns>
-        public EmailInfo GetEmail(string email){
+        public async Task<EmailInfo> GetEmail(string email){
             var overrideUrl = _baseUrl + "emails/" + email;
-            return _sharpBucketV1.Get(new EmailInfo(), overrideUrl);
+            return await _sharpBucketV1.Get(new EmailInfo(), overrideUrl);
         }
     }
 }

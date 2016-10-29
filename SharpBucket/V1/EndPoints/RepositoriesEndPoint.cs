@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using SharpBucket.V1.Pocos;
-using Version = SharpBucket.V1.Pocos.Version;
+using System.Threading.Tasks;
+using PortableBitBucketClient.V1.Pocos;
+using Version = PortableBitBucketClient.V1.Pocos.Version;
 
-namespace SharpBucket.V1.EndPoints{
+namespace PortableBitBucketClient.V1.EndPoints{
     /// <summary>
     /// The repositories endpoint has a number of resources you can use to manage repository resources. 
     /// For all repository resources, you supply a repo_slug that identifies the specific repository.  
@@ -12,12 +13,12 @@ namespace SharpBucket.V1.EndPoints{
     /// https://confluence.atlassian.com/display/BITBUCKET/repositories+Endpoint+-+1.0
     /// </summary>
     public class RepositoriesEndPoint{
-        private readonly SharpBucketV1 _sharpBucketV1;
+        private readonly BitBucketClientV1 _sharpBucketV1;
         private readonly string _baserUrl;
         private readonly string _issuesUrl;
         private readonly string _issuesIdUrl;
 
-        public RepositoriesEndPoint(string accountName, string repository, SharpBucketV1 sharpBucketV1){
+        public RepositoriesEndPoint(string accountName, string repository, BitBucketClientV1 sharpBucketV1){
             _sharpBucketV1 = sharpBucketV1;
             _baserUrl = "repositories/" + accountName + "/" + repository + "/";
             _issuesUrl = _baserUrl + "issues/";
@@ -34,9 +35,9 @@ namespace SharpBucket.V1.EndPoints{
         /// Private repositories require the caller to authenticate. 
         /// </summary>
         /// <returns></returns>
-        public ChangesetInfo ListChangeset(){
+        public async Task<ChangesetInfo> ListChangeset(){
             var overrideUrl = _baserUrl + "changesets/";
-            return _sharpBucketV1.Get(new ChangesetInfo(), overrideUrl);
+            return await _sharpBucketV1.Get(new ChangesetInfo(), overrideUrl);
         }
 
         /// <summary>
@@ -44,9 +45,9 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="changeset">The change set.</param>
         /// <returns></returns>
-        private Changeset GetChangeset(Changeset changeset){
+        private async Task<Changeset> GetChangeset(Changeset changeset){
             var overrideUrl = _baserUrl + "changesets/" + changeset.node;
-            return _sharpBucketV1.Get(changeset, overrideUrl);
+            return await _sharpBucketV1.Get(changeset, overrideUrl);
         }
 
         /// <summary>
@@ -54,8 +55,8 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="node">The node changeset identifier.</param>
         /// <returns></returns>
-        public Changeset GetChangeset(string node){
-            return GetChangeset(new Changeset{node = node});
+        public async Task<Changeset> GetChangeset(string node){
+            return await GetChangeset(new Changeset{node = node});
         }
 
         /// <summary>
@@ -64,9 +65,9 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="changeset">The change set whose diff stat you wish to get.</param>
         /// <returns></returns>
-        private List<DiffstatInfo> GetChangesetDiffstat(Changeset changeset){
+        private async Task<List<DiffstatInfo>> GetChangesetDiffstat(Changeset changeset){
             var overrideUrl = _baserUrl + "changesets/" + changeset.node + "/diffstat/";
-            return _sharpBucketV1.Get(new List<DiffstatInfo>(), overrideUrl);
+            return await _sharpBucketV1.Get(new List<DiffstatInfo>(), overrideUrl);
         }
 
         /// <summary>
@@ -75,8 +76,8 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="node">The node changeset identifier.</param>
         /// <returns></returns>
-        public List<DiffstatInfo> GetChangesetDiffstat(string node){
-            return GetChangesetDiffstat(new Changeset{node = node});
+        public async Task<List<DiffstatInfo>> GetChangesetDiffstat(string node){
+            return await GetChangesetDiffstat(new Changeset{node = node});
         }
 
         /// <summary>
@@ -85,9 +86,9 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="changeset">The changeset.</param>
         /// <returns></returns>
-        private Changeset GetChangesetDiff(Changeset changeset){
+        private async Task<Changeset> GetChangesetDiff(Changeset changeset){
             var overrideUrl = _baserUrl + "changesets/" + changeset.node + "/diff/";
-            return _sharpBucketV1.Get(changeset, overrideUrl);
+            return await _sharpBucketV1.Get(changeset, overrideUrl);
         }
 
         /// <summary>
@@ -96,8 +97,8 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="node">The node changeset identifier.</param>
         /// <returns></returns>
-        public Changeset GetChangesetDiff(string node){
-            return GetChangesetDiff(new Changeset{node = node});
+        public async Task<Changeset> GetChangesetDiff(string node){
+            return await GetChangesetDiff(new Changeset{node = node});
         }
 
         #endregion
@@ -108,9 +109,9 @@ namespace SharpBucket.V1.EndPoints{
         /// List all of the keys associated with an repository.
         /// </summary>
         /// <returns></returns>
-        public List<SSH> ListDeployKeys(){
+        public async Task<List<SSH>> ListDeployKeys(){
             var overrideUrl = _baserUrl + "deploy-keys/";
-            return _sharpBucketV1.Get(new List<SSH>(), overrideUrl);
+            return await _sharpBucketV1.Get(new List<SSH>(), overrideUrl);
         }
 
         /// <summary>
@@ -118,9 +119,9 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="pk">The key identifier assigned by Bitbucket. Use the GET call to obtain this value.</param>
         /// <returns></returns>
-        public SSH GetDeployKey(int? pk){
+        public async Task<SSH> GetDeployKey(int? pk){
             var overrideUrl = _baserUrl + "deploy-keys/" + pk + "/";
-            return _sharpBucketV1.Get(new SSH(), overrideUrl);
+            return await _sharpBucketV1.Get(new SSH(), overrideUrl);
         }
 
         /// <summary>
@@ -130,9 +131,9 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="key">The key.</param>
         /// <returns></returns>
-        public SSH PostDeployKey(SSH key){
+        public async Task<SSH> PostDeployKey(SSH key){
             var overrideUrl = _baserUrl + "deploy-keys/";
-            return _sharpBucketV1.Post(key, overrideUrl);
+            return await _sharpBucketV1.Post(key, overrideUrl);
         }
 
         /// <summary>
@@ -140,9 +141,9 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="key">The key identifier assigned by Bitbucket. Use the GET call to obtain this value.</param>
         /// <returns></returns>
-        public SSH DeleteDeployKey(SSH key){
+        public async Task<SSH> DeleteDeployKey(SSH key){
             var overrideUrl = _baserUrl + "deploy-keys/" + key.pk + "/";
-            return _sharpBucketV1.Delete(key, overrideUrl);
+            return await _sharpBucketV1.Delete(key, overrideUrl);
         }
 
         #endregion
@@ -153,9 +154,9 @@ namespace SharpBucket.V1.EndPoints{
         /// List all events of a repository's events associated with the specified repo_slug. By default, this call returns the top 25 events. 
         /// </summary>
         /// <returns></returns>
-        public EventInfo ListEvents(){
+        public async Task<EventInfo> ListEvents(){
             var overrideUrl = _baserUrl + "events/";
-            return _sharpBucketV1.Get(new EventInfo(), overrideUrl);
+            return await _sharpBucketV1.Get(new EventInfo(), overrideUrl);
         }
 
         #endregion
@@ -176,202 +177,202 @@ namespace SharpBucket.V1.EndPoints{
             return new IssuesResource(this);
         }
 
-        internal IssuesInfo ListIssues(){
-            return _sharpBucketV1.Get(new IssuesInfo(), _issuesUrl);
+        internal async Task<IssuesInfo> ListIssues(){
+            return await _sharpBucketV1.Get(new IssuesInfo(), _issuesUrl);
         }
 
-        private Issue GetIssue(Issue issue){
+        private async Task<Issue> GetIssue(Issue issue){
             var overrideUrl = String.Format(_issuesIdUrl, issue.local_id);
-            return _sharpBucketV1.Get(issue, overrideUrl);
+            return await _sharpBucketV1.Get(issue, overrideUrl);
         }
 
-        internal Issue GetIssue(int? issueId){
-            return GetIssue(new Issue{local_id = issueId});
+        internal async Task<Issue> GetIssue(int? issueId){
+            return await GetIssue(new Issue{local_id = issueId});
         }
 
-        internal IssueFollowers ListIssueFollowers(Issue issue){
+        internal async Task<IssueFollowers> ListIssueFollowers(Issue issue){
             var overrideUrl = String.Format(_issuesIdUrl + "followers", issue.local_id);
-            return _sharpBucketV1.Get(new IssueFollowers(), overrideUrl);
+            return await _sharpBucketV1.Get(new IssueFollowers(), overrideUrl);
         }
 
-        internal IssueFollowers ListIssueFollowers(int? issueId){
-            return ListIssueFollowers(new Issue{local_id = issueId});
+        internal async Task<IssueFollowers> ListIssueFollowers(int? issueId){
+            return await ListIssueFollowers(new Issue{local_id = issueId});
         }
 
-        internal Issue PostIssue(Issue issue){
-            return _sharpBucketV1.Post(issue, _issuesUrl);
+        internal async Task<Issue> PostIssue(Issue issue){
+            return await _sharpBucketV1.Post(issue, _issuesUrl);
         }
 
-        internal Issue PutIssue(Issue issue){
+        internal async Task<Issue> PutIssue(Issue issue){
             var overrideUrl = String.Format(_issuesIdUrl, issue.local_id);
-            return _sharpBucketV1.Put(issue, overrideUrl);
+            return await _sharpBucketV1.Put(issue, overrideUrl);
         }
 
-        internal Issue DeleteIssue(Issue issue){
+        internal async Task<Issue> DeleteIssue(Issue issue){
             var overrideUrl = String.Format(_issuesIdUrl, issue.local_id);
-            return _sharpBucketV1.Delete(issue, overrideUrl);
+            return await _sharpBucketV1.Delete(issue, overrideUrl);
         }
 
-        internal Issue DeleteIssue(int? issueId){
-            return DeleteIssue(new Issue{local_id = issueId});
+        internal async Task<Issue> DeleteIssue(int? issueId){
+            return await DeleteIssue(new Issue{local_id = issueId});
         }
 
-        internal List<Comment> ListIssueComments(Issue issue){
+        internal async Task<List<Comment>> ListIssueComments(Issue issue){
             var overrideUrl = String.Format(_issuesIdUrl + "comments", issue.local_id);
-            return _sharpBucketV1.Get(new List<Comment>(), overrideUrl);
+            return await _sharpBucketV1.Get(new List<Comment>(), overrideUrl);
         }
 
-        internal List<Comment> ListIssueComments(int issueId){
-            return ListIssueComments(new Issue{local_id = issueId});
+        internal async Task<List<Comment>> ListIssueComments(int issueId){
+            return await ListIssueComments(new Issue{local_id = issueId});
         }
 
-        private Comment GetIssueComment(int issueId, Comment comment){
+        private async Task<Comment> GetIssueComment(int issueId, Comment comment){
             var overrideUrl = String.Format(_issuesIdUrl + "comments/{1}", issueId, comment.comment_id);
-            return _sharpBucketV1.Get(comment, overrideUrl);
+            return await _sharpBucketV1.Get(comment, overrideUrl);
         }
 
-        internal Comment GetIssueComment(Issue issue, int? commentId){
+        internal async Task<Comment> GetIssueComment(Issue issue, int? commentId){
             var overrideUrl = String.Format(_issuesIdUrl + "comments/{1}", issue.local_id, commentId);
-            return _sharpBucketV1.Get(new Comment{comment_id = commentId}, overrideUrl);
+            return await _sharpBucketV1.Get(new Comment{comment_id = commentId}, overrideUrl);
         }
 
-        internal Comment GetIssueComment(int issueId, int? commentId){
-            return GetIssueComment(issueId, new Comment{comment_id = commentId});
+        internal async Task<Comment> GetIssueComment(int issueId, int? commentId){
+            return await GetIssueComment(issueId, new Comment{comment_id = commentId});
         }
 
-        internal Comment PostIssueComment(Issue issue, Comment comment){
+        internal async Task<Comment> PostIssueComment(Issue issue, Comment comment){
             var overrideUrl = String.Format(_issuesIdUrl + "comments", issue.local_id);
-            return _sharpBucketV1.Post(comment, overrideUrl);
+            return await _sharpBucketV1.Post(comment, overrideUrl);
         }
 
-        internal Comment PostIssueComment(int issueId, Comment comment){
-            return PostIssueComment(new Issue{local_id = issueId}, comment);
+        internal async Task<Comment> PostIssueComment(int issueId, Comment comment){
+            return await PostIssueComment(new Issue{local_id = issueId}, comment);
         }
 
-        internal Comment PutIssueComment(Issue issue, Comment comment){
+        internal async Task<Comment> PutIssueComment(Issue issue, Comment comment){
             var overrideUrl = String.Format(_issuesIdUrl + "comments/{1}", issue.local_id, comment.comment_id);
-            return _sharpBucketV1.Put(comment, overrideUrl);
+            return await _sharpBucketV1.Put(comment, overrideUrl);
         }
 
-        internal Comment PutIssueComment(int issueId, Comment comment){
+        internal async Task<Comment> PutIssueComment(int issueId, Comment comment){
             var overrideUrl = String.Format(_issuesIdUrl + "comments/{1}", issueId, comment.comment_id);
-            return _sharpBucketV1.Put(comment, overrideUrl);
+            return await _sharpBucketV1.Put(comment, overrideUrl);
         }
 
-        internal Comment DeleteIssueComment(Issue issue, Comment comment){
+        internal async Task<Comment> DeleteIssueComment(Issue issue, Comment comment){
             var overrideUrl = String.Format(_issuesIdUrl + "comments/{1}", issue.local_id, comment.comment_id);
-            return _sharpBucketV1.Delete(comment, overrideUrl);
+            return await _sharpBucketV1.Delete(comment, overrideUrl);
         }
 
-        internal Comment DeleteIssueComment(Issue issue, int? commentId){
-            return DeleteIssueComment(issue, new Comment{comment_id = commentId});
+        internal async Task<Comment> DeleteIssueComment(Issue issue, int? commentId){
+            return await DeleteIssueComment(issue, new Comment{comment_id = commentId});
         }
 
-        internal Comment DeleteIssueComment(int? issueId, Comment comment){
-            return DeleteIssueComment(new Issue{local_id = issueId}, comment);
+        internal async Task<Comment> DeleteIssueComment(int? issueId, Comment comment){
+            return await DeleteIssueComment(new Issue{local_id = issueId}, comment);
         }
 
-        internal Comment DeleteIssueComment(int? issueId, int? commentId){
-            return DeleteIssueComment(issueId, new Comment{comment_id = commentId});
+        internal async Task<Comment> DeleteIssueComment(int? issueId, int? commentId){
+            return await DeleteIssueComment(issueId, new Comment{comment_id = commentId});
         }
 
-        internal List<Component> ListComponents(){
+        internal async Task<List<Component>> ListComponents(){
             var overrideUrl = _issuesUrl + "components/";
-            return _sharpBucketV1.Get(new List<Component>(), overrideUrl);
+            return await _sharpBucketV1.Get(new List<Component>(), overrideUrl);
         }
 
-        private Component GetComponent(Component component){
+        private async Task<Component> GetComponent(Component component){
             var overrideUrl = _issuesUrl + "components/" + component.id;
-            return _sharpBucketV1.Get(component, overrideUrl);
+            return await _sharpBucketV1.Get(component, overrideUrl);
         }
 
-        internal Component GetComponent(int? componentId){
-            return GetComponent(new Component{id = componentId});
+        internal async Task<Component> GetComponent(int? componentId){
+            return await GetComponent(new Component{id = componentId});
         }
 
-        internal Component PostComponent(Component component){
+        internal async Task<Component> PostComponent(Component component){
             var overrideUrl = _issuesUrl + "components/";
-            return _sharpBucketV1.Post(component, overrideUrl);
+            return await _sharpBucketV1.Post(component, overrideUrl);
         }
 
-        internal Component PutComponent(Component component){
+        internal async Task<Component> PutComponent(Component component){
             var overrideUrl = _issuesUrl + "components/" + component.id;
-            return _sharpBucketV1.Put(component, overrideUrl);
+            return await _sharpBucketV1.Put(component, overrideUrl);
         }
 
-        internal Component DeleteComponent(Component component){
+        internal async Task<Component> DeleteComponent(Component component){
             var overrideUrl = _issuesUrl + "components/" + component.id;
-            return _sharpBucketV1.Delete(component, overrideUrl);
+            return await _sharpBucketV1.Delete(component, overrideUrl);
         }
 
-        internal Component DeleteComponent(int? componentId){
-            return DeleteComponent(new Component{id = componentId});
+        internal async Task<Component> DeleteComponent(int? componentId){
+            return await DeleteComponent(new Component{id = componentId});
         }
 
-        internal List<Version> ListVersions(){
+        internal async Task<List<Version>> ListVersions(){
             var overrideUrl = _issuesUrl + "versions/";
-            return _sharpBucketV1.Get(new List<Version>(), overrideUrl);
+            return await _sharpBucketV1.Get(new List<Version>(), overrideUrl);
         }
 
-        private Version GetVersion(Version version){
+        private async Task<Version> GetVersion(Version version){
             var overrideUrl = _issuesUrl + "versions/" + version.id;
-            return _sharpBucketV1.Get(version, overrideUrl);
+            return await _sharpBucketV1.Get(version, overrideUrl);
         }
 
-        internal Version GetVersion(int? versionId){
-            return GetVersion(new Version{id = versionId});
+        internal async Task<Version> GetVersion(int? versionId){
+            return await GetVersion(new Version{id = versionId});
         }
 
-        internal Version PostVersion(Version version){
+        internal async Task<Version> PostVersion(Version version){
             var overrideUrl = _issuesUrl + "versions/";
-            return _sharpBucketV1.Post(version, overrideUrl);
+            return await _sharpBucketV1.Post(version, overrideUrl);
         }
 
-        internal Version PutVersion(Version version){
+        internal async Task<Version> PutVersion(Version version){
             var overrideUrl = _issuesUrl + "versions/" + version.id;
-            return _sharpBucketV1.Put(version, overrideUrl);
+            return await _sharpBucketV1.Put(version, overrideUrl);
         }
 
-        internal Version DeleteVersion(Version version){
+        internal async Task<Version> DeleteVersion(Version version){
             var overrideUrl = _issuesUrl + "versions/" + version.id;
-            return _sharpBucketV1.Delete(version, overrideUrl);
+            return await _sharpBucketV1.Delete(version, overrideUrl);
         }
 
-        internal Version DeleteVersion(int? versionId){
-            return DeleteVersion(new Version{id = versionId});
+        internal async Task<Version> DeleteVersion(int? versionId){
+            return await DeleteVersion(new Version{id = versionId});
         }
 
-        internal List<Milestone> ListMilestones(){
+        internal async Task<List<Milestone>> ListMilestones(){
             var overrideUrl = _issuesUrl + "milestones/";
-            return _sharpBucketV1.Get(new List<Milestone>(), overrideUrl);
+            return await _sharpBucketV1.Get(new List<Milestone>(), overrideUrl);
         }
 
-        private Milestone GetMilestone(Milestone milestone){
+        private async Task<Milestone> GetMilestone(Milestone milestone){
             var overrideUrl = _issuesUrl + "milestones/" + milestone.id;
-            return _sharpBucketV1.Get(milestone, overrideUrl);
+            return await _sharpBucketV1.Get(milestone, overrideUrl);
         }
 
-        internal Milestone GetMilestone(int? milestoneId){
-            return GetMilestone(new Milestone{id = milestoneId});
+        internal async Task<Milestone> GetMilestone(int? milestoneId){
+            return await GetMilestone(new Milestone{id = milestoneId});
         }
 
-        internal Milestone PostMilestone(Milestone milestone){
+        internal async Task<Milestone> PostMilestone(Milestone milestone){
             var overrideUrl = _issuesUrl + "milestones/";
-            return _sharpBucketV1.Post(milestone, overrideUrl);
+            return await _sharpBucketV1.Post(milestone, overrideUrl);
         }
 
-        internal Milestone PutMilestone(Milestone milestone){
+        internal async Task<Milestone> PutMilestone(Milestone milestone){
             var overrideUrl = _issuesUrl + "milestones/" + milestone.id;
-            return _sharpBucketV1.Put(milestone, overrideUrl);
+            return await _sharpBucketV1.Put(milestone, overrideUrl);
         }
 
-        internal Milestone DeleteMilestone(Milestone milestone){
+        internal async Task<Milestone> DeleteMilestone(Milestone milestone){
             var overrideUrl = _issuesUrl + "milestones/" + milestone.id;
-            return _sharpBucketV1.Delete(milestone, overrideUrl);
+            return await _sharpBucketV1.Delete(milestone, overrideUrl);
         }
 
-        internal Milestone DeleteMilestone(int? milestoneId){
-            return DeleteMilestone(new Milestone{id = milestoneId});
+        internal async Task<Milestone> DeleteMilestone(int? milestoneId){
+            return await DeleteMilestone(new Milestone{id = milestoneId});
         }
 
         #endregion
@@ -382,9 +383,9 @@ namespace SharpBucket.V1.EndPoints{
         /// List all the links associated with a repository. The caller must authenticate as a user with administrative access to the repository.
         /// </summary>
         /// <returns></returns>
-        public List<Link> ListLinks(){
+        public async Task<List<Link>> ListLinks(){
             var overrideUrl = _baserUrl + "links/";
-            return _sharpBucketV1.Get(new List<Link>(), overrideUrl);
+            return await _sharpBucketV1.Get(new List<Link>(), overrideUrl);
         }
 
         /// <summary>
@@ -392,9 +393,9 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="linkId">The link id.</param>
         /// <returns></returns>
-        public Link GetLink(int? linkId){
+        public async Task<Link> GetLink(int? linkId){
             var overrideUrl = _baserUrl + "links/" + linkId + "/";
-            return _sharpBucketV1.Get(new Link(), overrideUrl);
+            return await _sharpBucketV1.Get(new Link(), overrideUrl);
         }
 
         /// <summary>
@@ -402,9 +403,9 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="link">The link.</param>
         /// <returns></returns>
-        public Link PostLink(Link link){
+        public async Task<Link> PostLink(Link link){
             var overrideUrl = _baserUrl + "links/";
-            return _sharpBucketV1.Post(link, overrideUrl);
+            return await _sharpBucketV1.Post(link, overrideUrl);
         }
 
         /// <summary>
@@ -412,9 +413,9 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="link">The link.</param>
         /// <returns></returns>
-        public Link PutLink(Link link){
+        public async Task<Link> PutLink(Link link){
             var overrideUrl = _baserUrl + "links/" + link.id + "/";
-            return _sharpBucketV1.Put(link, overrideUrl);
+            return await _sharpBucketV1.Put(link, overrideUrl);
         }
 
         /// <summary>
@@ -422,9 +423,9 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="link">The link.</param>
         /// <returns></returns>
-        public Link DeleteLink(Link link){
+        public async Task<Link> DeleteLink(Link link){
             var overrideUrl = _baserUrl + "links/" + link.id + "/";
-            return _sharpBucketV1.Delete(link, overrideUrl);
+            return await _sharpBucketV1.Delete(link, overrideUrl);
         }
 
         #endregion
@@ -435,9 +436,9 @@ namespace SharpBucket.V1.EndPoints{
         /// Gets a list of branches associated with a repository. 
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, BranchInfo> ListBranches(){
+        public async Task<Dictionary<string, BranchInfo>> ListBranches(){
             var overrideUrl = _baserUrl + "branches/";
-            return _sharpBucketV1.Get(new Dictionary<string, BranchInfo>(), overrideUrl);
+            return await _sharpBucketV1.Get(new Dictionary<string, BranchInfo>(), overrideUrl);
         }
 
         /// <summary>
@@ -445,18 +446,18 @@ namespace SharpBucket.V1.EndPoints{
         /// You set the main branch from a repository's Repository details page.
         /// </summary>
         /// <returns></returns>
-        public MainBranch GetMainBranch(){
+        public async Task<MainBranch> GetMainBranch(){
             var overrideUrl = _baserUrl + "main-branch/";
-            return _sharpBucketV1.Get(new MainBranch(), overrideUrl);
+            return await _sharpBucketV1.Get(new MainBranch(), overrideUrl);
         }
 
         /// <summary>
         /// Use this resource to list the tags and branches for a given repository. 
         /// </summary>
         /// <returns></returns>
-        public IDictionary<string, Tag> ListTags(){
+        public async Task<IDictionary<string, Tag>> ListTags(){
             var overrideUrl = _baserUrl + "tags/";
-            return _sharpBucketV1.Get(new Dictionary<string, Tag>(), overrideUrl);
+            return await _sharpBucketV1.Get(new Dictionary<string, Tag>(), overrideUrl);
         }
 
         #endregion
@@ -470,9 +471,9 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="page">Title of the page.</param>
         /// <returns></returns>
-        public Wiki GetWiki(string page){
+        public async Task<Wiki> GetWiki(string page){
             var overrideUrl = _baserUrl + "wiki/" + page;
-            return _sharpBucketV1.Get(new Wiki(), overrideUrl);
+            return await _sharpBucketV1.Get(new Wiki(), overrideUrl);
         }
 
         // TODO:  Doesnt work, 500 server error, same for put
@@ -482,9 +483,9 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="newPage">Title of the page.</param>
         /// <param name="location">Path to the page.</param>
         /// <returns></returns>
-        public Wiki PostWiki(Wiki newPage, string location){
+        public async Task<Wiki> PostWiki(Wiki newPage, string location){
             var overrideUrl = _baserUrl + "wiki/" + location;
-            return _sharpBucketV1.Post(newPage, overrideUrl);
+            return await _sharpBucketV1.Post(newPage, overrideUrl);
         }
 
         /// <summary>
@@ -493,9 +494,9 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="updatedPage">Title of the page.</param>
         /// <param name="location">Path to the page.</param>
         /// <returns></returns>
-        public Wiki PutWiki(Wiki updatedPage, string location){
+        public async Task<Wiki> PutWiki(Wiki updatedPage, string location){
             var overrideUrl = _baserUrl + "wiki/" + location;
-            return _sharpBucketV1.Put(updatedPage, overrideUrl);
+            return await _sharpBucketV1.Put(updatedPage, overrideUrl);
         }
 
         #endregion
@@ -508,9 +509,9 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="revision">Revision to get.</param>
         /// <param name="path">File to get.</param>
         /// <returns></returns>
-        public List<Revision> GetRevisionSrc(string revision, string path) {
+        public async Task<List<Revision>> GetRevisionSrc(string revision, string path) {
            var overrideUrl = _baserUrl + "src/" + revision + "/" + path;
-           return _sharpBucketV1.Get(new List<Revision>(), overrideUrl);
+           return await _sharpBucketV1.Get(new List<Revision>(), overrideUrl);
         }
 
         /// <summary>
@@ -519,9 +520,9 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="revision">Revision to get.</param>
         /// <param name="path">File to get.</param>
         /// <returns></returns>
-        public String GetRevisionRaw(string revision, string path) {
+        public async Task<String> GetRevisionRaw(string revision, string path) {
            var overrideUrl = _baserUrl + "raw/" + revision + "/" + path;
-           return _sharpBucketV1.Get(new object(), overrideUrl) as String;
+           return await _sharpBucketV1.Get(new object(), overrideUrl) as String;
         }
 
         #endregion

@@ -1,5 +1,7 @@
-﻿namespace SharpBucket.V2.Pocos {
-    public class Team : User {
-       
-    }
+﻿namespace PortableBitBucketClient.V2.Pocos
+{
+	public class Team : User
+	{
+
+	}
 }

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using SharpBucket.V1.Pocos;
+using System.Threading.Tasks;
+using PortableBitBucketClient.V1.Pocos;
 
-namespace SharpBucket.V1.EndPoints{
+namespace PortableBitBucketClient.V1.EndPoints{
     /// <summary>
     /// The issues resource provides functionality for getting information on issues in an issue tracker, 
     /// creating new issues, updating them and deleting them. 
@@ -24,8 +25,8 @@ namespace SharpBucket.V1.EndPoints{
         /// If you filter this call, the count value contains the total number of issues that meet the filter criteria.
         /// </summary>
         /// <returns></returns>
-        public IssuesInfo ListIssues(){
-            return _repositoriesEndPoint.ListIssues();
+        public async Task<IssuesInfo> ListIssues(){
+            return await _repositoriesEndPoint.ListIssues();
         }
 
         /// <summary>
@@ -35,8 +36,8 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="issueId">The issue identifier.</param>
         /// <returns></returns>
-        public Issue GetIssue(int? issueId){
-            return _repositoriesEndPoint.GetIssue(issueId);
+        public async Task<Issue> GetIssue(int? issueId){
+            return await _repositoriesEndPoint.GetIssue(issueId);
         }
 
         /// <summary>
@@ -46,8 +47,8 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="issue">The issue.</param>
         /// <returns>Response from the BitBucket API.</returns>
-        public Issue PostIssue(Issue issue){
-            return _repositoriesEndPoint.PostIssue(issue);
+        public async Task<Issue> PostIssue(Issue issue){
+            return await _repositoriesEndPoint.PostIssue(issue);
         }
 
         /// <summary>
@@ -57,8 +58,8 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="issue">The issue.</param>
         /// <returns>Response from the BitBucket API.</returns>
-        public Issue PutIssue(Issue issue){
-            return _repositoriesEndPoint.PutIssue(issue);
+        public async Task<Issue> PutIssue(Issue issue){
+            return await _repositoriesEndPoint.PutIssue(issue);
         }
 
         /// <summary>
@@ -67,16 +68,16 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="issueId">The issue identifier.</param>
         /// <returns>Response from the BitBucket API.</returns>
-        public Issue DeleteIssue(int? issueId){
-            return _repositoriesEndPoint.DeleteIssue(issueId);
+        public async Task<Issue> DeleteIssue(int? issueId){
+            return await _repositoriesEndPoint.DeleteIssue(issueId);
         }
 
         /// <summary>
         /// List the components associated with the issue tracker. 
         /// </summary>
         /// <returns></returns>
-        public List<Component> ListComponents(){
-            return _repositoriesEndPoint.ListComponents();
+        public async Task<List<Component>> ListComponents(){
+            return await _repositoriesEndPoint.ListComponents();
         }
 
         /// <summary>
@@ -85,20 +86,20 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="componentId">The component identifier.</param>
         /// <returns></returns>
-        public Component GetComponent(int? componentId){
-            return _repositoriesEndPoint.GetComponent(componentId);
+        public async Task<Component> GetComponent(int? componentId){
+            return await _repositoriesEndPoint.GetComponent(componentId);
         }
 
         /// <summary>
         /// Creates a new component in an issue tracker. 
         /// You must supply a name value in the form of a string. 
-        /// The server creates the id for you and it appears in the return value. 
+        /// The server creates the id for you and it appears in the return await value. 
         /// Public and private issue trackers require the caller to authenticate with an account that has appropriate authorisation.
         /// </summary>
         /// <param name="component">The component.</param>
         /// <returns>The response from the BitBucket API.</returns>
-        public Component PostComponent(Component component){
-            return _repositoriesEndPoint.PostComponent(component);
+        public async Task<Component> PostComponent(Component component){
+            return await _repositoriesEndPoint.PostComponent(component);
         }
 
         /// <summary>
@@ -108,8 +109,8 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="component">The component.</param>
         /// <returns>The response from the BitBucket API.</returns>
-        public Component PutComponent(Component component){
-            return _repositoriesEndPoint.PutComponent(component);
+        public async Task<Component> PutComponent(Component component){
+            return await _repositoriesEndPoint.PutComponent(component);
         }
 
         /// <summary>
@@ -118,16 +119,16 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="componentId">The component identifier.</param>
         /// <returns>The response from the BitBucket API.</returns>
-        public Component DeleteComponent(int? componentId){
-            return _repositoriesEndPoint.DeleteComponent(componentId);
+        public async Task<Component> DeleteComponent(int? componentId){
+            return await _repositoriesEndPoint.DeleteComponent(componentId);
         }
 
         /// <summary>
         /// List all the versions associated with the issue tracker.
         /// </summary>
         /// <returns></returns>
-        public List<Version> ListVersions(){
-            return _repositoriesEndPoint.ListVersions();
+        public async Task<List<Version>> ListVersions(){
+            return await _repositoriesEndPoint.ListVersions();
         }
 
         /// <summary>
@@ -136,19 +137,19 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="versionId">The version identifier.</param>
         /// <returns></returns>
-        public Version GetVersion(int? versionId){
-            return _repositoriesEndPoint.GetVersion(versionId);
+        public async Task<Version> GetVersion(int? versionId){
+            return await _repositoriesEndPoint.GetVersion(versionId);
         }
 
         /// <summary>
         /// Creates a new version in an issue tracker. You must supply a name value in the form of a string. 
-        /// The server creates the id for you and it appears in the return value. 
+        /// The server creates the id for you and it appears in the return await value. 
         /// Public and private issue trackers require the caller to authenticate with an account that has appropriate authorisation. 
         /// </summary>
         /// <param name="version">The version.</param>
         /// <returns>The response from the BitBucket API.</returns>
-        public Version PostVersion(Version version){
-            return _repositoriesEndPoint.PostVersion(version);
+        public async Task<Version> PostVersion(Version version){
+            return await _repositoriesEndPoint.PostVersion(version);
         }
 
         /// <summary>
@@ -157,8 +158,8 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="version">The version.</param>
         /// <returns>The response from the BitBucket API.</returns>
-        public Version PutVersion(Version version){
-            return _repositoriesEndPoint.PutVersion(version);
+        public async Task<Version> PutVersion(Version version){
+            return await _repositoriesEndPoint.PutVersion(version);
         }
 
         /// <summary>
@@ -167,16 +168,16 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="versionId">The version identifier.</param>
         /// <returns>The response from the BitBucket API.</returns>
-        public Version DeleteVersion(int? versionId){
-            return _repositoriesEndPoint.DeleteVersion(versionId);
+        public async Task<Version> DeleteVersion(int? versionId){
+            return await _repositoriesEndPoint.DeleteVersion(versionId);
         }
 
         /// <summary>
         /// List all the milestones associated with the issue tracker.
         /// </summary>
         /// <returns></returns>
-        public List<Milestone> ListMilestones(){
-            return _repositoriesEndPoint.ListMilestones();
+        public async Task<List<Milestone>> ListMilestones(){
+            return await _repositoriesEndPoint.ListMilestones();
         }
 
         /// <summary>
@@ -185,19 +186,19 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="milestoneId">The milestone identifier.</param>
         /// <returns></returns>
-        public Milestone GetMilestone(int? milestoneId){
-            return _repositoriesEndPoint.GetMilestone(milestoneId);
+        public async Task<Milestone> GetMilestone(int? milestoneId){
+            return await _repositoriesEndPoint.GetMilestone(milestoneId);
         }
 
         /// <summary>
         /// Creates a new milestone in an issue tracker. You must supply a name value in the form of a string. 
-        /// The server creates the id for you and it appears in the return value. 
+        /// The server creates the id for you and it appears in the return await value. 
         /// Public and private issue trackers require the caller to authenticate with an account that has appropriate authorisation. 
         /// </summary>
         /// <param name="milestone">The milestone.</param>
         /// <returns>The response from the BitBucket API.</returns>
-        public Milestone PostMilestone(Milestone milestone){
-            return _repositoriesEndPoint.PostMilestone(milestone);
+        public async Task<Milestone> PostMilestone(Milestone milestone){
+            return await _repositoriesEndPoint.PostMilestone(milestone);
         }
 
         /// <summary>
@@ -207,8 +208,8 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="milestone">The milestone.</param>
         /// <returns>The response from the BitBucket API.</returns>
-        public Milestone PutMilestone(Milestone milestone){
-            return _repositoriesEndPoint.PutMilestone(milestone);
+        public async Task<Milestone> PutMilestone(Milestone milestone){
+            return await _repositoriesEndPoint.PutMilestone(milestone);
         }
 
         /// <summary>
@@ -217,8 +218,8 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="milestoneId">The milestone identifier.</param>
         /// <returns>The response from the BitBucket API.</returns>
-        public Milestone DeleteMilestone(int? milestoneId){
-            return _repositoriesEndPoint.DeleteMilestone(milestoneId);
+        public async Task<Milestone> DeleteMilestone(int? milestoneId){
+            return await _repositoriesEndPoint.DeleteMilestone(milestoneId);
         }
 
         #endregion
@@ -236,8 +237,8 @@ namespace SharpBucket.V1.EndPoints{
             return new IssueResource(_repositoriesEndPoint, issueId);
         }
 
-        internal List<Comment> ListIssueComments(Issue issue){
-            return _repositoriesEndPoint.ListIssueComments(issue);
+        internal async Task<List<Comment>> ListIssueComments(Issue issue){
+            return await _repositoriesEndPoint.ListIssueComments(issue);
         }
 
         /// <summary>
@@ -245,8 +246,8 @@ namespace SharpBucket.V1.EndPoints{
         /// </summary>
         /// <param name="issueId">The issue identifier.</param>
         /// <returns></returns>
-        internal List<Comment> ListIssueComments(int issueId){
-            return _repositoriesEndPoint.ListIssueComments(issueId);
+        internal async Task<List<Comment>> ListIssueComments(int issueId){
+            return await _repositoriesEndPoint.ListIssueComments(issueId);
         }
 
         /// <summary>
@@ -255,8 +256,8 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="issue">The issue.</param>
         /// <param name="commentId">The comment identifier.</param>
         /// <returns></returns>
-        internal Comment GetIssueComment(Issue issue, int? commentId){
-            return _repositoriesEndPoint.GetIssueComment(issue, commentId);
+        internal async Task<Comment> GetIssueComment(Issue issue, int? commentId){
+            return await _repositoriesEndPoint.GetIssueComment(issue, commentId);
         }
 
         /// <summary>
@@ -265,8 +266,8 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="issueId">The issue identifier.</param>
         /// <param name="commentId">The comment identifier.</param>
         /// <returns></returns>
-        internal Comment GetIssueComment(int issueId, int? commentId){
-            return _repositoriesEndPoint.GetIssueComment(issueId, commentId);
+        internal async Task<Comment> GetIssueComment(int issueId, int? commentId){
+            return await _repositoriesEndPoint.GetIssueComment(issueId, commentId);
         }
 
         /// <summary>
@@ -275,8 +276,8 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="issue">The issue.</param>
         /// <param name="comment">The comment.</param>
         /// <returns>Response from the BitBucket API.</returns>
-        internal Comment PostIssueComment(Issue issue, Comment comment){
-            return _repositoriesEndPoint.PostIssueComment(issue, comment);
+        internal async Task<Comment> PostIssueComment(Issue issue, Comment comment){
+            return await _repositoriesEndPoint.PostIssueComment(issue, comment);
         }
 
         /// <summary>
@@ -285,8 +286,8 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="issueId">The issue identifier.</param>
         /// <param name="comment">The comment.</param>
         /// <returns>Response from the BitBucket API.</returns>
-        internal Comment PostIssueComment(int issueId, Comment comment){
-            return _repositoriesEndPoint.PostIssueComment(issueId, comment);
+        internal async Task<Comment> PostIssueComment(int issueId, Comment comment){
+            return await _repositoriesEndPoint.PostIssueComment(issueId, comment);
         }
 
         /// <summary>
@@ -295,8 +296,8 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="issue">The issue.</param>
         /// <param name="comment">The comment.</param>
         /// <returns>The response of BitBucket API.</returns>
-        internal Comment PutIssueComment(Issue issue, Comment comment){
-            return _repositoriesEndPoint.PutIssueComment(issue, comment);
+        internal async Task<Comment> PutIssueComment(Issue issue, Comment comment){
+            return await _repositoriesEndPoint.PutIssueComment(issue, comment);
         }
 
         /// <summary>
@@ -305,8 +306,8 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="issueId">The issue identifier.</param>
         /// <param name="comment">The comment.</param>
         /// <returns>The response of BitBucket API.</returns>
-        internal Comment PutIssueComment(int issueId, Comment comment){
-            return _repositoriesEndPoint.PutIssueComment(issueId, comment);
+        internal async Task<Comment> PutIssueComment(int issueId, Comment comment){
+            return await _repositoriesEndPoint.PutIssueComment(issueId, comment);
         }
 
         /// <summary>
@@ -315,8 +316,8 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="issue">The issue.</param>
         /// <param name="comment">The comment.</param>
         /// <returns>The response of BitBucket API.</returns>
-        internal Comment DeleteIssueComment(Issue issue, Comment comment){
-            return _repositoriesEndPoint.DeleteIssueComment(issue, comment);
+        internal async Task<Comment> DeleteIssueComment(Issue issue, Comment comment){
+            return await _repositoriesEndPoint.DeleteIssueComment(issue, comment);
         }
 
         /// <summary>
@@ -325,8 +326,8 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="issue">The issue.</param>
         /// <param name="commentId">The comment identifier.</param>
         /// <returns>The response of BitBucket API.</returns>
-        internal Comment DeleteIssueComment(Issue issue, int? commentId){
-            return _repositoriesEndPoint.DeleteIssueComment(issue, commentId);
+        internal async Task<Comment> DeleteIssueComment(Issue issue, int? commentId){
+            return await _repositoriesEndPoint.DeleteIssueComment(issue, commentId);
         }
 
         /// <summary>
@@ -335,8 +336,8 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="issueId">The issue identifier.</param>
         /// <param name="commentId">The comment identifier.</param>
         /// <returns>The response of BitBucket API.</returns>
-        internal Comment DeleteIssueComment(int? issueId, int? commentId){
-            return _repositoriesEndPoint.DeleteIssueComment(issueId, commentId);
+        internal async Task<Comment> DeleteIssueComment(int? issueId, int? commentId){
+            return await _repositoriesEndPoint.DeleteIssueComment(issueId, commentId);
         }
 
         /// <summary>
@@ -345,8 +346,8 @@ namespace SharpBucket.V1.EndPoints{
         /// <param name="issueId">The issue identifier.</param>
         /// <param name="comment">The comment.</param>
         /// <returns>The response of BitBucket API.</returns>
-        internal Comment DeleteIssueComment(int? issueId, Comment comment){
-            return _repositoriesEndPoint.DeleteIssueComment(issueId, comment);
+        internal async Task<Comment> DeleteIssueComment(int? issueId, Comment comment){
+            return await _repositoriesEndPoint.DeleteIssueComment(issueId, comment);
         }
 
         #endregion
